@@ -1,0 +1,12 @@
+{
+  "name": "zopim-asyn-demo",
+  "version": "0.0.1",
+  "private": false,
+  "scripts": {
+    "start": "grunt"
+  },
+  "dependencies": {
+    "angular": "^1.5.3",
+    "grunt": "^1.0.1"
+  }
+}
