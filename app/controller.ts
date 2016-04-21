@@ -1,3 +1,4 @@
+///<reference path="../typings/zopim-async-demo.d.ts"/>
 import AsyncLoaderService from './async-loader-service.ts';
 
 interface Window {
@@ -21,13 +22,7 @@ export default class AsyncController {
     }
     
     public loadZopim = (setLocalstorage: boolean) => {
-        
-        if(setLocalstorage){
-            localStorage.setItem(this.zopimLocalStorageKey, this.zopimLocalStorageObject);
-        }
-        else {
-            localStorage.clear();
-        }
+        localStorage.setItem(this.zopimLocalStorageKey, this.zopimLocalStorageObject);
          
         this.asyncLoaderService
             .loadLibrary('zopim', this.zopimLibraryUrl)
@@ -35,9 +30,14 @@ export default class AsyncController {
                 let chat: any;
                 // initializes $zopim and sets the baseline properties for the chat window
                 window.$zopim(() => {
-                    chat = window.$zopim.livechat();                    
-                    //set up whatever you want                    
-                    chat.window.show();
+                    chat = window.$zopim.livechat();
+                    chat.setOnChatStart(()=>{
+                        window.$zopim.livechat.addTags('a tag');
+                    });
+                    chat.setOnConnected(
+                    () => {
+                        window.$zopim.livechat.window.show();
+                    });
                  });
             });
     }

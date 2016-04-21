@@ -1,1 +1,11 @@
 node_modules/
+
+.baseDir.ts
+.baseDir.js
+.baseDir.js.map
+
+dist/
+.tscache/
+
+typings/
+!typings/zopim-async-demo.d.ts

@@ -1,3 +1,4 @@
+///<reference path="../typings/zopim-async-demo.d.ts"/>
 export default class AsyncLoaderService {
 
     static $inject: Array<string> = ['$http'];
